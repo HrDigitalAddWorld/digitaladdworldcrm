@@ -1,5 +1,6 @@
 import { FiMenu, FiBell, FiSearch, FiLogOut } from 'react-icons/fi'
 import { useAuth } from '../../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 const Header = ({ toggleSidebar }) => {
   const { logout, user } = useAuth()
@@ -28,12 +29,15 @@ const Header = ({ toggleSidebar }) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button className="relative p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+          <Link 
+            to="/dashboard/notifications" 
+            className="relative p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          >
             <FiBell size={22} />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
+          </Link>
 
-          <div className="flex items-center space-x-3 pl-4 border-l border-gray-300">
+          <Link to="/dashboard/profile" className="flex items-center space-x-3 pl-4 border-l border-gray-300 hover:bg-gray-50 rounded-lg p-2 transition-colors">
             <div className="text-right hidden sm:block">
               <p className="text-sm font-medium text-gray-900">{user?.name || 'Admin User'}</p>
               <p className="text-xs text-gray-500">{user?.email || 'admin@crm.com'}</p>
@@ -43,7 +47,7 @@ const Header = ({ toggleSidebar }) => {
                 {user?.name?.charAt(0).toUpperCase() || 'A'}
               </span>
             </div>
-          </div>
+          </Link>
 
           <button
             onClick={logout}

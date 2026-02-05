@@ -1,13 +1,15 @@
 import { NavLink } from 'react-router-dom'
-import { FiHome, FiUsers, FiTrendingUp, FiCheckSquare, FiBarChart2, FiX } from 'react-icons/fi'
+import { FiHome, FiUsers, FiTrendingUp, FiCheckSquare, FiBarChart2, FiBell, FiSettings, FiX } from 'react-icons/fi'
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = [
-    { path: '/', icon: FiHome, label: 'Dashboard' },
-    { path: '/customers', icon: FiUsers, label: 'Customers' },
-    { path: '/leads', icon: FiTrendingUp, label: 'Leads' },
-    { path: '/tasks', icon: FiCheckSquare, label: 'Tasks' },
-    { path: '/analytics', icon: FiBarChart2, label: 'Analytics' },
+    { path: '/dashboard', icon: FiHome, label: 'Dashboard' },
+    { path: '/dashboard/customers', icon: FiUsers, label: 'Customers' },
+    { path: '/dashboard/leads', icon: FiTrendingUp, label: 'Leads' },
+    { path: '/dashboard/tasks', icon: FiCheckSquare, label: 'Tasks' },
+    { path: '/dashboard/analytics', icon: FiBarChart2, label: 'Analytics' },
+    { path: '/dashboard/notifications', icon: FiBell, label: 'Notifications' },
+    { path: '/dashboard/profile', icon: FiSettings, label: 'Settings' },
   ]
 
   return (
@@ -33,7 +35,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">CRM Pro</span>
+              <span className="text-xl font-bold text-gray-900">Digital CRM</span>
             </div>
             <button 
               onClick={() => setIsOpen(false)}
@@ -48,7 +50,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <NavLink
                 key={item.path}
                 to={item.path}
-                end={item.path === '/'}
+                end={item.path === '/dashboard'}
                 className={({ isActive }) => `
                   flex items-center space-x-3 px-4 py-3 rounded-lg
                   transition-all duration-200

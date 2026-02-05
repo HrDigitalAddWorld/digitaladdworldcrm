@@ -3,26 +3,35 @@ import { useAuth } from './context/AuthContext'
 import Layout from './components/layout/Layout'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Customers from './pages/Customers'
 import Leads from './pages/Leads'
 import Tasks from './pages/Tasks'
 import Analytics from './pages/Analytics'
+import Notifications from './pages/Notifications'
+import Profile from './pages/Profile'
 
 function PrivateRoute({ children }) {
   const { user } = useAuth()
   return user ? children : <Navigate to="/login" />
 }
 
-function App() {
+function PublicRoute({ children }) {
   const { user } = useAuth()
+  return user ? <Navigate to="/dashboard" /> : children
+}
 
+function App() {
   return (
     <Routes>
-      <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-      <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+      {/* Public Routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+      <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
       
-      <Route path="/" element={
+      {/* Private Routes */}
+      <Route path="/dashboard" element={
         <PrivateRoute>
           <Layout />
         </PrivateRoute>
@@ -32,6 +41,8 @@ function App() {
         <Route path="leads" element={<Leads />} />
         <Route path="tasks" element={<Tasks />} />
         <Route path="analytics" element={<Analytics />} />
+        <Route path="notifications" element={<Notifications />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />
