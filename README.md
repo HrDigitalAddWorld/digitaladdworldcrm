@@ -64,3 +64,17 @@ npm install
 
 ## Run the project
 npm start
+
+--------------------------------------------------------
+
+🔮 Future Scope
+
+- Automated lead and merchant assignment
+- Email and notification automation
+- Analytics and reporting dashboards
+- Payment gateway and subscription management
+- Integration with e-commerce and e-wallet or other platforms 
+
+👨‍💻 Author
+Ankit Jaiswal
+ankitias9260@gmail.com
